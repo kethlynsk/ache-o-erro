@@ -27,8 +27,9 @@ const modelo = () => {
     const curso = prompt("Descrição do curso: ");
     const periodo = prompt("Qual o período: ");
 
-    if (nomeAluno !== "" && curso !==
-    "" && periodo !== "" &&
+    if (nomeAluno == "" && curso 
+    ==
+    "" && periodo == "" &&
     !isNaN(dataNascimento) && dataNascimento < 2024) {
     return {
     nomeAluno,
@@ -54,7 +55,15 @@ const modelo = () => {
         // como Executar a função
 ////////////
 
+let year = getFullYear()
 
+let cont = 0
+alunos.forEach((aluno, indice) => {
+    let conta = year - aluno.dataNascimento
+if(conta < 18){
+    cont++
+}
+})
 
     const listar = () => {
         if (alunos.length === 0) {
@@ -71,6 +80,7 @@ const modelo = () => {
         Curso: ${aluno.curso}
         Período: ${aluno.periodo}
         ` );
+        console.log("maior de idade: ", cont)
         });
         return true;
         }
@@ -106,7 +116,7 @@ const modelo = () => {
             curso,
             periodo,
             };
-            if (aluno !== undefined) {
+            if (aluno !== undefined && !isNaN(indice)) {
             alunos[indice] = (aluno);
             console.log("Aluno atualizado com sucesso");
             console.log(alunos);
@@ -114,6 +124,8 @@ const modelo = () => {
             console.log("Falha na atualização");
             }
             };
+
+
 
 module.exports = {
     criar,
